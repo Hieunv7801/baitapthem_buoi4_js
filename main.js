@@ -64,8 +64,10 @@ function cachDoc() {
     var number = getMyEle("number").value * 1;
     var donVi = number % 10;
     var hangChuc = Math.floor((number / 10) % 10);
-    var hangTram = number / 100;
-
+    var hangTram = Math.floor(number / 100);
+    if(hangChuc % 10 == 0 && donVi != 0){
+        var hang_chuc = "lẻ";
+    }
     //in ra hàng trăm
     switch (hangTram) {
         case 1:
@@ -99,7 +101,7 @@ function cachDoc() {
     //in ra hang chuc
     switch (hangChuc) {
         case 1:
-            var hang_chuc = "mười"
+            hang_chuc = "mười"
             break;
         case 2:
             hang_chuc = ("hai mươi ");
@@ -156,10 +158,11 @@ function cachDoc() {
             don_vi = ("chín ");
             break;
     }
-    return docc = hang_tram+" "+hang_chuc+" "+don_vi;
+    return  hang_tram+" "+hang_chuc+" "+don_vi;
 }
 function Read(){
     var cach_doc = cachDoc();
     getMyEle("showRead").innerHTML = cach_doc;
 }
+
 
